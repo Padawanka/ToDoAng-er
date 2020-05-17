@@ -1,10 +1,10 @@
 <h1>This is the list of tasks I wanna do today</h1>
 
-<div *ngFor= "let task of newtasks; let i=index">
-    <app-new-task [attr.id]="i" (deleteATask)='displayEmitt($event)'></app-new-task>
+<div *ngFor= "let task of newtasks">
+    <app-new-task [counter]="counter" value={{taskDescription}} [localKeys]="localKeys"></app-new-task>
 </div>
 
 <button type="button" (click)="addATask()">Add a task</button>
 
 <h1>These are the task you already did. Well done!</h1>
-<app-task-done *ngFor="let fin of finishedTasks"></app-task-done>
+<app-task-done *ngFor="let fin of finishedTasks" [taskDescription]="taskDescription" ></app-task-done>

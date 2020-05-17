@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { TaskDoneComponent } from './task-done/task-done.component';
+import { FetchFromLocalStorageService } from './fetch-from-local-storage.service';
+import { IdValueService } from './id-value.service';
+import { DeleteIdValueService } from './delete-id-value.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,7 @@ import { TaskDoneComponent } from './task-done/task-done.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [FetchFromLocalStorageService, IdValueService, DeleteIdValueService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

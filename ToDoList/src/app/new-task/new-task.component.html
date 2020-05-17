@@ -1,5 +1,5 @@
 <form>
-    <input type="checkbox">
-    <input type="text" value="taskDescription">
-    <button type="button" (click)="onTaskDelete($event)">Delete</button>
+    <input type="checkbox" (change)="sendIdData()">
+    <input type="text" value={{taskDesc}} (change)="writeToStorage($event)">
+    <button type="button" (click)="onTaskDelete()">Delete</button>
 </form>
