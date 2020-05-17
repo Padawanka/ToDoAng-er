@@ -13,7 +13,7 @@ export class IdValueService  {
 
   private myId = new Subject<number>();
 
-  getId(): Observable<number> {
+  getId(): Observable<number> {   
     return this.myId.asObservable();
   }
 

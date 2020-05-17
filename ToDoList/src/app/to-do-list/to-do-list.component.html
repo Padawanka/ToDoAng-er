@@ -1,7 +1,7 @@
 <h1>This is the list of tasks I wanna do today</h1>
 
 <div *ngFor= "let task of newtasks">
-    <app-new-task [counter]="counter" value={{taskDescription}} [localKeys]="localKeys"></app-new-task>
+    <app-new-task [counter]="counter" value={{taskDescription}}></app-new-task>
 </div>
 
 <button type="button" (click)="addATask()">Add a task</button>

@@ -16,6 +16,7 @@ export class ToDoListComponent implements OnInit {
   newtasks: Array<number> = [];
   finishedTasks: Array<number> = [];
   counter: number = 0;
+  localKeys:Array<any>;
 
   taskDescription: string;
 
@@ -29,6 +30,9 @@ export class ToDoListComponent implements OnInit {
       let indexNum = this.newtasks.findIndex(element => element===id);
       this.newtasks.splice(indexNum, 1);
       this.taskDescription = this.checkForDescription(id);
+      let thistask = JSON.parse(this.storageService.getFromLS(id.toString()));
+      thistask.Completed = true;
+      this.storageService.writeToLS(id.toString(), JSON.stringify(thistask));
     });
     this.DeleteSubscription = this.deleteId.getId().subscribe(id => {
       let indexNum = this.newtasks.findIndex(element => element===id);
@@ -39,21 +43,6 @@ export class ToDoListComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    let localKeys = this.storageService.getKeys();
-    if (localKeys.length == 0) {
-      this.counter = localKeys.length;
-    } else {
-      this.counter = localKeys.length +1;
-    }
-
-    localKeys.forEach(element => {
-     let storageObject = JSON.parse(this.storageService.getFromLS(element));
-      if (storageObject.Completed==true) {
-        this.finishedTasks.push(storageObject.Id);
-      } else {
-        this.newtasks.push(storageObject.Id);
-      }
-    });
     
   }
 

@@ -15,11 +15,15 @@ export class NewTaskComponent implements OnInit {
   subscription;
 
   @Input() counter: number;
+  @Input() localKeys:Array<any>;
+  @Input() taskDescription:string;
+
 
   constructor(private storageService: FetchFromLocalStorageService, public IdValuesService: IdValueService, public DeleteId: DeleteIdValueService) {
   }
 
   ngOnInit(): void {
+    this.taskDesc = this.taskDescription;
     this.idNum=this.counter;
     this.taskDesc = this.getTaskDescription(this.idNum);
   }

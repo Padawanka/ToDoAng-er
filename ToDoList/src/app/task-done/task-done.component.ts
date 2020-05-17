@@ -30,13 +30,6 @@ export class TaskDoneComponent implements OnInit {
     this.IdSubscription = this.idValue.getId().subscribe(id => {
       this.Id = id.toString();
     });
-    let taskData = new ToDoItemData();
-    taskData.Completed = true;
-    console.log(this.Id);
-    
-    taskData.Id = Number(this.Id);
-    taskData.TaskDescription = this.taskDesc;
-
   }
 
 
@@ -46,9 +39,5 @@ export class TaskDoneComponent implements OnInit {
     taskData.TaskDescription = event.target.value;
     localStorage.setItem(this.Id, JSON.stringify(taskData));
   }
-
- 
-
-  
 
 }
